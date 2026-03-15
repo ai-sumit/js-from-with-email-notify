@@ -14,6 +14,11 @@ function doPost(e) {
 
     // Use GmailApp instead of MailApp
     GmailApp.sendEmail(myEmail, subject, body);
+
+    // 3. Send Thank You Email to the Subscriber
+    var subjectToUser = "Welcome to our Newsletter!";
+    var bodyToUser = "Hi " + data.name + ",\n\nThank you for subscribing to our newsletter! We're excited to have you on board.\n\nBest regards,\nThe Team";
+    GmailApp.sendEmail(data.email, subjectToUser, bodyToUser);
     
     return ContentService
       .createTextOutput(JSON.stringify({ "result": "success" }))
